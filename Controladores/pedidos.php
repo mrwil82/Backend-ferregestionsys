@@ -17,18 +17,21 @@ switch ($control) {
         break;
     case 'insertar':
         $json = file_get_contents('php://input');
-        $params = json_decode($json, true);
-        if ($params) {
-            $vec = $pedidos->insertar($params);
-        } else {
-            $vec = ['error' => 'Invalid JSON input'];
-        }
+        $params = json_decode($json);
+        $texto_arreglo = serialize($params->productos);
+        $params->productos = $texto_arreglo;
+        $vec = $pedidos->insertar($params);
         break;
-    default:
-        $vec = ['error' => 'Invalid control parameter'];
-        break;
-}
 
+    case 'productos':
+        break;
+
+    case 'productos':
+        $id = $_GET['id'];
+        $vec = $pedidos->consultapedidos($id);
+        break;
+        
+}
 $datosj = json_encode($vec);
 header('Content-Type: application/json');
 echo $datosj;

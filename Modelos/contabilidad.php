@@ -45,7 +45,7 @@ class contabilidad
 
     public function editar($id, $params)
     {
-        $editar = "UPDATE contabilidad SET Ingresos = '$params->Ingresos', Egresos = '$params->Egresos', Activos = '$params-> Activos', Pasivos = '$params-> Pasivos' WHERE id_contabilidad = $id";
+        $editar = "UPDATE contabilidad SET Ingresos = '$params->Ingresos', Egresos = '$params->Egresos', Activos = '$params->Activos', Pasivos = '$params->Pasivos' WHERE id_contabilidad = $id";
         mysqli_query($this->conexion, $editar);
         $vec = [];
         $vec['resultado'] = "OK";

@@ -11,7 +11,7 @@ class pedidos
     //Metodos
     public function consulta()
     {
-        $con = "SELECT * FROM ventas ORDER BY Productos, Cantidad, Referencia";
+        $con = "SELECT * FROM ventas ORDER BY  Productos, Cantidad, Referencia";
         $res = mysqli_query($this->conexion, $con);
         $vec = [];
 
@@ -21,47 +21,23 @@ class pedidos
 
         return $vec;
     }
-
-    public function eliminar($id)
-    {
-        $del = "DELETE FROM ventas WHERE id_ventas = $id";
-        mysqli_query($this->conexion, $del);
-        $vec = [];
-        $vec['resultado'] = "OK";
-        $vec['mensaje'] = "La infor,acion ha sido eliminada";
-        return $vec;
-    }
-
     public function insertar($params)
     {
-        $ins = "INSERT INTO ventas(Productos, Cantidad, Referencia) VALUES('$params->Productos', '$params->Cantidad', '$params->Referencia')";
+        $ins = "INSERT INTO ventas(Productos, Cantidad, Referencia) 
+        VALUES('$params->Productos', '$params->Cantidad', '$params->Referencia')";
         mysqli_query($this->conexion, $ins);
         $vec = [];
         $vec['resultado'] = "OK";
         $vec['mensaje'] = "La informacion ha sido guardada";
         return $vec;
     }
-
-    public function editar($id, $params)
+    public function consultapedidos($id)
     {
-        $editar = "UPDATE ventas SET Productos = '$params->Productos', Cantidad = '$params->Cantidad', Referencia = '$params->Referencia' WHERE id_ventas = $id";
-        mysqli_query($this->conexion, $editar);
-        $vec = [];
-        $vec['resultado'] = "OK";
-        $vec['mensaje'] = "La informacion sido editada";
-        return $vec;
-    }
+        $con = "SELECT productos from ventas WHERE id_ventas = $id";
+        $res = mysqli_query($this->conexion, $con);
+        $row = mysqli_fetch_array($res);
+        $vec = unserialize($row[0]);
 
-    public function filtro($valor)
-    {
-        $filtro = "SELECT * FROM ventas WHERE Productos LIKE '%$valor%' OR Cantidad LIKE '%$valor%' OR Referencia LIKE '%$valor%'";
-        $res = mysqli_query($this->conexion, $filtro);
-        $vec = [];
-
-        while ($row = mysqli_fetch_array($res)) {
-            $vec[] = $row;
-        }
         return $vec;
     }
 }
-?>

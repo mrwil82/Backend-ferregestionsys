@@ -35,7 +35,7 @@ class ventas
 
     public function insertar($params)
     {
-        $ins = "INSERT INTO ventas(Productos, Cantidad, Referencia) VALUES('$params->Productos', '$params->Cantidad', '$params->Referencia')";
+        $ins = "INSERT INTO ventas(Fecha, Productos, Cantidad, Referencia) VALUES( '$params->Fecha', '$params->Productos', '$params->Cantidad', '$params->Referencia')";
         mysqli_query($this->conexion, $ins);
         $vec = [];
         $vec['resultado'] = "OK";
@@ -45,7 +45,7 @@ class ventas
 
     public function editar($id, $params)
     {
-        $editar = "UPDATE ventas SET Productos = '$params->Productos', Cantidad = '$params->Cantidad', Referencia = '$params->Referencia' WHERE id_ventas = $id";
+        $editar = "UPDATE ventas SET Fecha = '$params->Fecha', Productos = '$params->Productos', Cantidad = '$params->Cantidad', Referencia = '$params->Referencia' WHERE id_ventas = $id";
         mysqli_query($this->conexion, $editar);
         $vec = [];
         $vec['resultado'] = "OK";
@@ -55,7 +55,7 @@ class ventas
 
     public function filtro($valor)
     {
-        $filtro = "SELECT * FROM ventas WHERE Productos LIKE '%$valor%' OR Cantidad LIKE '%$valor%' OR Referencia LIKE '%$valor%'";
+        $filtro = "SELECT * FROM ventas WHERE Fecha LIKE '%$valor%' OR Productos LIKE '%$valor%' OR Cantidad LIKE '%$valor%' OR Referencia LIKE '%$valor%'";
         $res = mysqli_query($this->conexion, $filtro);
         $vec = [];
 
