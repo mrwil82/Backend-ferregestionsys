@@ -41,7 +41,7 @@ class empleado
     }
     public function editar($id, $params)
     {
-        $editar = "UPDATE empleado SET Nombre = '$params->Nombre', Apellido = '$params->Apellido', Direccion  = '$params->Direccion', Telefono = '$params->Telefono', Correo '$params->Correo' WHERE id_empleado = $id";
+        $editar = "UPDATE empleado SET Nombre = '$params->Nombre', Apellido = '$params->Apellido', Direccion  = '$params->Direccion', Telefono = '$params->Telefono', Correo = '$params->Correo' WHERE id_empleado = $id";
         mysqli_query($this->conexion, $editar);
         $vec = [];
         $vec['resultado'] = "OK";

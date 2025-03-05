@@ -12,7 +12,7 @@ class ventas
 
     public function consulta()
     {
-        $con = "SELECT * FROM ventas ORDER BY Productos, Cantidad, Referencia";
+        $con = "SELECT * FROM ventas ORDER BY Fecha, Productos, Cantidad, Referencia";
         $res = mysqli_query($this->conexion, $con);
         $vec = [];
 

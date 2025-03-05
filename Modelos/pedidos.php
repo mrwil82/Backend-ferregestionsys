@@ -11,7 +11,7 @@ class pedidos
     //Metodos
     public function consulta()
     {
-        $con = "SELECT * FROM ventas ORDER BY  Productos, Cantidad, Referencia";
+        $con = "SELECT * FROM ventas ORDER BY Fecha, Productos, Cantidad, Referencia";
         $res = mysqli_query($this->conexion, $con);
         $vec = [];
 
@@ -23,8 +23,8 @@ class pedidos
     }
     public function insertar($params)
     {
-        $ins = "INSERT INTO ventas(Productos, Cantidad, Referencia) 
-        VALUES('$params->Productos', '$params->Cantidad', '$params->Referencia')";
+        $ins = "INSERT INTO ventas( Fecha, Productos, Cantidad, Referencia) 
+        VALUES( '$params->Fecha', '$params->Productos', '$params->Cantidad', '$params->Referencia')";
         mysqli_query($this->conexion, $ins);
         $vec = [];
         $vec['resultado'] = "OK";

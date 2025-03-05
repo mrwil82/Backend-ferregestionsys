@@ -12,7 +12,7 @@ class proveedor
     //Metodos
     public function consulta()
     {
-        $con = "SELECT * FROM proveedor ORDER BY Nombre, Apellido, Telefono, Correo, Direccion, Nit";
+        $con = "SELECT * FROM proveedor ORDER BY Nombre, Telefono, Correo, Direccion, Nit";
         $res = mysqli_query($this->conexion, $con);
         $vec = [];
         while ($row = mysqli_fetch_array($res)) {
@@ -31,7 +31,7 @@ class proveedor
     }
     public function insertar($params)
     {
-        $ins = "INSERT INTO proveedor(Nombre, Apellido, Telefono, Correo, Direccion, Nit) VALUES('$params->Nombre', '$params->Apellido', '$params->Telefono', '$params->Correo', '$params->Direccion', '$params->Nit')";
+        $ins = "INSERT INTO proveedor(Nombre, Telefono, Correo, Direccion, Nit) VALUES('$params->Nombre', '$params->Telefono', '$params->Correo', '$params->Direccion', '$params->Nit')";
         mysqli_query($this->conexion, $ins);
         $vec = [];
         $vec['resultado'] = "OK";
@@ -40,7 +40,7 @@ class proveedor
     }
     public function editar($id, $params)
     {
-        $editar = "UPDATE proveedor SET Nombre = '$params->Nombre', Apellido = '$params->Apellido', Telefono = '$params->Telefono', Correo = '$params->Correo', Direccion = '$params->Direccion', Nit = '$params->Nit' WHERE id_proveedor = $id";
+        $editar = "UPDATE proveedor SET Nombre = '$params->Nombre', Telefono = '$params->Telefono', Correo = '$params->Correo', Direccion = '$params->Direccion', Nit = '$params->Nit' WHERE id_proveedor = $id";
         mysqli_query($this->conexion, $editar);
         $vec = [];
         $vec['resultado'] = "OK";
@@ -49,7 +49,7 @@ class proveedor
     }
     public function filtro($valor)
     {
-        $filtro = "SELECT * FROM proveedor WHERE Nombre LIKE '%$valor%' OR Apellido LIKE '%$valor%' OR Telefono LIKE '%$valor%' OR Correo LIKE '%$valor%' OR Direccion LIKE '%$valor%' OR Nit LIKE '%$valor%'";
+        $filtro = "SELECT * FROM proveedor WHERE Nombre LIKE '%$valor%' OR Telefono LIKE '%$valor%' OR Correo LIKE '%$valor%' OR Direccion LIKE '%$valor%' OR Nit LIKE '%$valor%'";
         $res = mysqli_query($this->conexion, $filtro);
         $vec = [];
         while ($row = mysqli_fetch_array($res)) {

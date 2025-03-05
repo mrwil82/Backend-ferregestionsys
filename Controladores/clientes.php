@@ -5,9 +5,11 @@ header('Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Ac
 require_once "../conexion.php";
 require_once "../Modelos/clientes.php";
 
-$control = $_GET["control"];
+$control = $_GET["control"] ?? "";
 
 $clientes = new clientes($conexion);
+
+$vec = [];
 
 switch ($control) {
     case 'consulta':
@@ -15,6 +17,7 @@ switch ($control) {
         break;
     case 'insertar':
         $json = file_get_contents('php://input');
+        //$json = '{"Nombre":"Ferreteria la 38","Apellido":"Ferreteria","Identificacion":"123456789","Correo":"ferreteria@ferreteria.com","Telefono":"3838383","Ciudad":"Madrid","Departamento":"Comercial"}';
         $params = json_decode($json);
         $vec = $clientes->insertar($params);
         break;
@@ -24,6 +27,7 @@ switch ($control) {
         break;
     case 'editar':
         $json = file_get_contents('php://input');
+        //$json = '{"Nombre":"Ferret","Apellido":"Ferreteria","Identificacion":"123456789","Correo":"ferreteria@ferreteria.com","Telefono":"3838383","Ciudad":"Madrid","Departamento":"Cundinamarca"}';
         $params = json_decode($json);
         $id = $_GET['id'];
         $vec = $clientes->editar($id, $params);

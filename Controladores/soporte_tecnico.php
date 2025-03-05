@@ -5,9 +5,11 @@ header('Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Ac
 require_once "../conexion.php";
 require_once "../Modelos/soporte_tecnico.php";
 
-$control = $_GET["control"];
+$control = $_GET["control"] ?? "";
 
 $soporte_tecnico = new soporte_tecnico($conexion);
+
+$vec = [];
 
 switch ($control) {
     case 'consulta':
@@ -15,6 +17,7 @@ switch ($control) {
         break;
     case 'insertar':
         $json = file_get_contents('php://input');
+        //$json = '{"Incidencia":"falla","Tecnico":"1","Solucion":"problema"}';
         $params = json_decode($json);
         $vec = $soporte_tecnico->insertar($params);
         break;
@@ -24,6 +27,7 @@ switch ($control) {
         break;
     case 'editar':
         $json = file_get_contents('php://input');
+        //$json = '{"Incidencia":"solucion","Tecnico":"22","Solucion":"solucion"}';
         $params = json_decode($json);
         $id = $_GET['id'];
         $vec = $soporte_tecnico->editar($id, $params);
