@@ -17,7 +17,7 @@ switch ($control) {
         break;
     case 'insertar':
         $json = file_get_contents('php://input');
-        //$json = '{"Nombre":"Ferreteria la 38","Apellido":"Ferreteria","Identificacion":"123456789","Correo":"ferreteria@ferreteria.com","Telefono":"3838383","Ciudad":"Madrid","Departamento":"Comercial"}';
+        //$json = '{"Nombre":"Ferreteria la 38","Apellido":"Ferreteria","Identificacion":"123456789","Correo":"ferreteria@ferreteria.com","Telefono":"3838383","Ciudad":"Madrid"}';
         $params = json_decode($json);
         $vec = $clientes->insertar($params);
         break;
@@ -27,7 +27,7 @@ switch ($control) {
         break;
     case 'editar':
         $json = file_get_contents('php://input');
-        //$json = '{"Nombre":"Ferret","Apellido":"Ferreteria","Identificacion":"123456789","Correo":"ferreteria@ferreteria.com","Telefono":"3838383","Ciudad":"Madrid","Departamento":"Cundinamarca"}';
+        //$json = '{"Nombre":"Ferret","Apellido":"Ferreteria","Identificacion":"123456789","Correo":"ferreteria@ferreteria.com","Telefono":"3838383","Ciudad":"Madrid"}';
         $params = json_decode($json);
         $id = $_GET['id'];
         $vec = $clientes->editar($id, $params);
