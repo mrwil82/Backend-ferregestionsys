@@ -19,7 +19,7 @@ switch ($control) {
         $json = file_get_contents('php://input');
         //$json = '{"Productos": "1", "Cantidad": "1","Referencia": "1"}';
         $params = json_decode($json);
-        $texto_arreglo = serialize($params->productos);
+        $texto_arreglo = serialize($params->Productos);
         $params->productos = $texto_arreglo;
         $vec = $pedidos->insertar($params);
         break;
