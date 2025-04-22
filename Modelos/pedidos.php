@@ -11,11 +11,20 @@ class pedidos
     //Metodos
     public function consulta()
     {
-        $con = "SELECT * FROM ventas ORDER BY Fecha, Productos, Cantidad, Precio";
+        // Adaptado a la estructura real de la tabla ventas
+        $con = "SELECT 
+                    id_ventas, 
+                    Fecha, 
+                    Productos AS Descripcion, 
+                    Cantidad, 
+                    Precio, 
+                    (Cantidad * Precio) AS Total
+                FROM ventas
+                ORDER BY Fecha DESC";
         $res = mysqli_query($this->conexion, $con);
         $vec = [];
 
-        while ($row = mysqli_fetch_array($res)) {
+        while ($row = mysqli_fetch_assoc($res)) {
             $vec[] = $row;
         }
 
@@ -42,7 +51,7 @@ class pedidos
 }
 public function consultapedidos($id)
 {
-    $con = "SELECT productos FROM ventas WHERE id_ventas = $id"; // ← Asegúrate de que 'ventas' es la tabla correcta
+    $con = "SELECT productos FROM ventas WHERE id_ventas = $id"; 
     $res = mysqli_query($this->conexion, $con);
     $row = mysqli_fetch_array($res);
     $vec = unserialize($row[0]);
