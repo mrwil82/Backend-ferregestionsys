@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 11-03-2025 a las 01:15:53
+-- Tiempo de generación: 02-05-2025 a las 19:51:41
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -90,7 +90,8 @@ CREATE TABLE `compras` (
 
 INSERT INTO `compras` (`id_compras`, `Unidades`, `Valor_compra`, `Proveedor`, `Producto`, `Referencia`, `fo_id_contabilidad`) VALUES
 (2, 25, 4000, 'Grupo ferretero GENMAR .LTDA', 'Disco de corte para concreto 4 1/2\"', 'DIS-002', NULL),
-(3, 25, 32000, 'Ferrestar de Colombia .SAS', 'Martillo de bola 24 oz', 'MAR-002', NULL);
+(3, 25, 32000, 'Ferrestar de Colombia .SAS', 'Martillo de bola 24 oz', 'MAR-002', NULL),
+(11, 52, 55500000, 'ferrefe', 'pitos', 'negros', NULL);
 
 -- --------------------------------------------------------
 
@@ -110,9 +111,8 @@ CREATE TABLE `contabilidad` (
 -- Volcado de datos para la tabla `contabilidad`
 --
 
-INSERT INTO `contabilidad` (`id_contabilidad`, `Ingresos`, `Egresos`, `Activos`, `Pasivos`, `fo_id_ventas`) VALUES
-(1, 555555.00, 586936.00, 25634.00, 256455.00, NULL),
-(2, 500000.00, 623000.00, 1160000.00, 10000000.00, NULL);
+INSERT INTO `contabilidad` (`id_contabilidad`, `Ingresos`, `Egresos`, `Activos`, `Pasivos`) VALUES
+(4, 9000000.00, 10000000.00, 52000000.00, 324156.00);
 
 -- --------------------------------------------------------
 
@@ -136,7 +136,7 @@ CREATE TABLE `empleado` (
 
 INSERT INTO `empleado` (`id_empleado`, `Nombre`, `Apellido`, `Direccion`, `Telefono`, `Correo`, `fo_id_administracion`) VALUES
 (1, 'Shirley', 'Buitrago', 'calle 33 # 12 - 34 ', '231 3625', 'shir@gmail.com', NULL),
-(2, 'Wilson', 'Ortiz', 'calle 21 sur # 72 - 89', '312374690', 'Wilson_ort@gmail.com', NULL),
+(2, 'Wilson Andres', 'Ortiz', 'calle 21 sur # 72 - 89', '312374690', 'Wilson_ort@gmail.com', NULL),
 (3, 'Ana Maria', 'Martinez Benjumea', 'calle 81 # 56 - 25', '344 5656', 'anma_benju@hot.com', NULL),
 (4, 'Maria Cecilia', 'Vanegas Moreno', 'Carrera 68 # 36 - 59 ', '711 8596', 'mavanmo@outlook.com', NULL),
 (14, 'Ferreteria ', 'Ferreteria jiji', '123456789', '3838', 'ferreteria@ferreteria.com', NULL);
@@ -169,7 +169,9 @@ INSERT INTO `inventario` (`id_inventario`, `Producto`, `Cantidad`, `Precio`, `Re
 (5, 'Disco de corte para concreto 4 1/2\"', '12', 4200, 'DIS-002', 'Grupo ferretero GENMAR .LTDA', NULL),
 (15, 'cepillos', '13', 2000, '177', 'oxxo', NULL),
 (16, 'pala', '52', 25000, 'de construccion', 'duccker', NULL),
-(17, 'esferos', '100', 1500, 'azul', 'vic', NULL);
+(17, 'esferos', '100', 1500, 'azul', 'vic', NULL),
+(19, 'hachas de bombero ', '16', 5000, 'roja ', 'bomberos', NULL),
+(20, 'saca tierra', '45', 60000, 'rojo', 'easy', NULL);
 
 -- --------------------------------------------------------
 
@@ -217,7 +219,8 @@ CREATE TABLE `soporte_tecnico` (
 
 INSERT INTO `soporte_tecnico` (`id_soporte`, `Incidencia`, `Tecnico`, `Solucion`, `fo_id_administracion`) VALUES
 (3, 'Sistema caido', 'Wilson Ortiz', 'Reinicio forzado', NULL),
-(5, 'Falla General', 'Maria Vanegas', 'Reinicio y reinstalación de controladores', NULL);
+(5, 'Falla General', 'Maria Vanegas', 'Reinicio y reinstalación de controladores', NULL),
+(9, 'eee', 'eeee', 'eeee', NULL);
 
 -- --------------------------------------------------------
 
@@ -243,9 +246,9 @@ CREATE TABLE `usuarios` (
 
 INSERT INTO `usuarios` (`id_usuarios`, `Nombre`, `Apellido`, `Correo`, `Telefono`, `Cargo`, `Documento`, `clave`, `fo_id_administracion`) VALUES
 (1, 'Shirley', 'Buitrago', 'shir@gmail.com', 1234568, 'Administrador', 12304, '7c4a8d09ca3762af61e59520943dc26494f8941b', NULL),
-(2, 'Wilson', 'Ortiz', 'wil82@gmail.com', 1234567, 'Tecnico Soporte', 7932564, '7c4a8d09ca3762af61e59520943dc26494f8941b', NULL),
-(3, 'Maria ', 'Vanegas', 'mavanmo@outlook.com', 5645263, 'Técnico Soporte', 125633654, '69c5fcebaa65b560eaf06c3fbeb481ae44b8d618', NULL),
-(17, 'wilson ', 'ortiz', 'wilsonao@hotmail.com', 312364, 'tecnico', 789456123, '7c4a8d09ca3762af61e59520943dc26494f8941b', NULL);
+(2, 'Wilson', 'Ortiz', 'wil82@gmail.com', 1234567, 'Inviatado', 7932564, '7c4a8d09ca3762af61e59520943dc26494f8941b', NULL),
+(3, 'Maria ', 'Vanegas', 'mavanmo@outlook.com', 5645263, 'Administrador', 125633654, '60149a289a3623cd214943af2892e103f4bddafb', NULL),
+(19, 'Jair ', 'Ortiz Martinez', 'jair@gmail.com', 644555, 'Usuario', 455664, '7c4a8d09ca3762af61e59520943dc26494f8941b', NULL);
 
 -- --------------------------------------------------------
 
@@ -258,7 +261,7 @@ CREATE TABLE `ventas` (
   `Fecha` date NOT NULL,
   `Productos` varchar(255) NOT NULL,
   `Cantidad` varchar(255) NOT NULL,
-  `Precio` decimal(11,0) NOT NULL
+  `Precio` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -269,9 +272,9 @@ INSERT INTO `ventas` (`id_ventas`, `Fecha`, `Productos`, `Cantidad`, `Precio`) V
 (25, '2025-03-05', 'esferos,cepillos,pala,Broca para concreto 6 mm,Compresor de aire 50L', '5', 5000),
 (26, '2025-03-08', 'pala', '23', 7800),
 (29, '2025-03-08', 'metro', '3', 6000),
-(30, '2025-03-08', 'pala', '1', 0),
-(31, '2025-03-08', 'Alicate universal', '1', 0),
-(32, '2025-03-10', 'Alicate universal', '1', 0);
+(33, '2025-03-10', 'palos', '55', 4500),
+(71, '2025-04-22', 'Broca para concreto 6 mm,Broca para concreto 6 mm', '2', 36975),
+(73, '2025-04-22', 'palos', '50', 50000000);
 
 --
 -- Índices para tablas volcadas
@@ -298,11 +301,11 @@ ALTER TABLE `compras`
   ADD KEY `fo_id_contabilidad` (`fo_id_contabilidad`);
 
 --
---
 -- Indices de la tabla `contabilidad`
 --
 ALTER TABLE `contabilidad`
   ADD PRIMARY KEY (`id_contabilidad`);
+
 --
 -- Indices de la tabla `empleado`
 --
@@ -352,61 +355,61 @@ ALTER TABLE `ventas`
 -- AUTO_INCREMENT de la tabla `administracion`
 --
 ALTER TABLE `administracion`
-  MODIFY `id_administracion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_administracion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `clientes`
 --
 ALTER TABLE `clientes`
-  MODIFY `id_clientes` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_clientes` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT de la tabla `compras`
 --
 ALTER TABLE `compras`
-  MODIFY `id_compras` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_compras` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de la tabla `contabilidad`
 --
 ALTER TABLE `contabilidad`
-  MODIFY `id_contabilidad` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_contabilidad` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `empleado`
 --
 ALTER TABLE `empleado`
-  MODIFY `id_empleado` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_empleado` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT de la tabla `inventario`
 --
 ALTER TABLE `inventario`
-  MODIFY `id_inventario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id_inventario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT de la tabla `proveedor`
 --
 ALTER TABLE `proveedor`
-  MODIFY `id_proveedor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_proveedor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `soporte_tecnico`
 --
 ALTER TABLE `soporte_tecnico`
-  MODIFY `id_soporte` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_soporte` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id_usuarios` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id_usuarios` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT de la tabla `ventas`
 --
 ALTER TABLE `ventas`
-  MODIFY `id_ventas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id_ventas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
 
 --
 -- Restricciones para tablas volcadas
@@ -435,24 +438,6 @@ ALTER TABLE `empleado`
 --
 ALTER TABLE `inventario`
   ADD CONSTRAINT `fk_inventario_soporte` FOREIGN KEY (`fo_id_soporte`) REFERENCES `soporte_tecnico` (`id_soporte`) ON DELETE SET NULL ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `proveedor`
---
-ALTER TABLE `proveedor`
-  ADD CONSTRAINT `fk_proveedor_inventario` FOREIGN KEY (`fo_id_inventario`) REFERENCES `inventario` (`id_inventario`) ON DELETE SET NULL ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `soporte_tecnico`
---
-ALTER TABLE `soporte_tecnico`
-  ADD CONSTRAINT `fk_soporte_administracion` FOREIGN KEY (`fo_id_administracion`) REFERENCES `administracion` (`id_administracion`) ON DELETE SET NULL ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `usuarios`
---
-ALTER TABLE `usuarios`
-  ADD CONSTRAINT `fk_usuarios_administracion` FOREIGN KEY (`fo_id_administracion`) REFERENCES `administracion` (`id_administracion`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
